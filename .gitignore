@@ -1,3 +1,5 @@
+.vscode
+
 /.bundle/
 /.yardoc
 /_yardoc/
@@ -6,3 +8,26 @@
 /pkg/
 /spec/reports/
 /tmp/
+
+Gemfile.lock
+
+*.gem
+*.rbc
+.bundle
+.vscode
+.config
+coverage
+InstalledFiles
+lib/bundler/man
+pkg
+rdoc
+spec/reports
+test/tmp
+test/version_tmp
+tmp
+
+# YARD artifacts
+.yardoc
+_yardoc
+doc/
+*.lock
