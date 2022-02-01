@@ -87,10 +87,10 @@ module Sacn
         def pack(data = "")
           puts "dmp_pack"
           
-          @dmp_length = DMP_LAYER_SIZE + @prop_values_count
-          
           @prop_values = @prop_values[0...512]
           @prop_values_count = @prop_values.count+1
+          
+          @dmp_length = DMP_LAYER_SIZE + @prop_values_count
           
           mydata = [dmp_flength, @dmp_vector, @atdt, @first_addr, @addr_inc, @prop_values_count, @start_code, @prop_values].flatten.pack("n C C n n n C C#{@prop_values_count-1}") 
           #               n           C         C         n           n           n                   C        C#{@prop_values_count-1}

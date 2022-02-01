@@ -41,9 +41,10 @@ trap(:TERM){ puts "term"; EM.stop }
 # step = 0
 EM.run do
   Sacn::EMServer.test_me do |s|
-    s.sacn.off :message
-    s.sacn.on :message do |data|
-      puts "msg"
+    s.sacn.off :data
+    s.sacn.on :data do |data|
+      puts "data"
+      puts "data - #{data[:packet].universe} #{data[:packet].start_code}-#{data[:packet].prop_values_count-1}: #{data[:packet].channels.join(" ")}"
     end
   end
   # EM::open_datagram_socket('192.168.0.203', Sacn::IO::PORT, nil) do |s|
