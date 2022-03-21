@@ -10,7 +10,9 @@ module Sacn
 
     #DATA_LOSS_TIMEOUT = 2.5.seconds # E131_NETWORK_DATA_LOSS_TIMEOUT
 
-    attr_reader :cid, :source_name
+    # attr_reader :cid, :source_name
+    attr_reader :cid
+    attr_accessor :source_name
 
     # TODO
     def inspect(full = false)
@@ -40,7 +42,7 @@ module Sacn
       # puts self.inspect
       # puts options.inspect
       @cid      = options && options[:cid] || UUIDTools::UUID.md5_create(UUIDTools::UUID_DNS_NAMESPACE, "redrocks.pro")
-      @source_name = "test" * 15
+      @source_name = "Sacn Redrocks Test"
       @port     = options && options[:port] || PORT
       @network  = options && options[:network] || "0.0.0.0" #"239.255.0.1" #"2.0.0.0"
       @netmask  = options && options[:netmask] || NETMASK

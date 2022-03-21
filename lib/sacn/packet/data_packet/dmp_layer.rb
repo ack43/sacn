@@ -14,7 +14,7 @@ module Sacn
         # DATA_OFFSET = 
 
         def init(options = {})
-          puts "DMP INIT"
+          # puts "DMP INIT"
           @dmp_flags = DMP_FLAGS
           @dmp_vector = DMP_VECTOR
           @atdt = ATDT
@@ -27,7 +27,7 @@ module Sacn
         end
         
         def self.prepended(base)
-          puts "DMP prepended"
+          # puts "DMP prepended"
           base.attr_accessor :dmp_flags, :dmp_length, :dmp_vector, :atdt, :first_addr, :addr_inc, :prop_values_count, :start_code, :prop_values
           base.attr_accessor :start_code, :data
 
@@ -38,7 +38,7 @@ module Sacn
         # attr_accessor :start_code, :data
 
         def ==(other_packet)
-          puts '==(other); data; dmp'
+          # puts '==(other); data; dmp'
           ret = super and 
             self.dmp_flags == other_packet.dmp_flags and 
             self.dmp_length == other_packet.dmp_length and 

@@ -6,7 +6,7 @@ module Sacn
         # https://tsp.esta.org/tsp/documents/docs/E1-31-2016.pdf#page=21
         # https://tsp.esta.org/tsp/documents/docs/ANSI_E1-31-2018.pdf#page=21
         def self.prepended(base)
-          puts "FRAME prepended"
+          # puts "FRAME prepended"
           base.attr_accessor :framing_flags, :framing_length, :framing_vector, :source_name, :reserved
         end
 
@@ -18,7 +18,7 @@ module Sacn
         DATA_OFFSET = FULL_FRAMING_LAYER_SIZE-RootLayer::FULL_ROOT_LAYER_SIZE
 
         def ==(other_packet)
-          puts '==(other); data; frame(uni_discovery)'
+          # puts '==(other); data; frame(uni_discovery)'
           ret = super and 
             self.framing_flags == other_packet.framing_flags and 
             self.framing_length == other_packet.framing_length and 
@@ -51,11 +51,11 @@ module Sacn
         def pack(data = "")          
           @framing_length = FRAMING_LAYER_SIZE + data.length
           
-          puts framing_flength, @framing_vector, @source_name, @reserved
+          # puts framing_flength, @framing_vector, @source_name, @reserved
           # raise "1111"
           mydata = [framing_flength, @framing_vector, @source_name, @reserved].flatten.pack("n l> Z64 n")
           #               n               l>               Z64         n      
-          puts mydata.inspect
+          # puts mydata.inspect
           defined?(super) ? super(mydata + data) : mydata + data
         end
 
@@ -70,7 +70,7 @@ module Sacn
         #   parse_framing_flength(framing_flength)
         # end
         def unpack(data)
-          puts "frame_unpack2"
+          # puts "frame_unpack2"
           data = super if defined?(super)
           
           framing_flength, @framing_vector, @universe, @reserved = data.unpack("n l> Z64 n")

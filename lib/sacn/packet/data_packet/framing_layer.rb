@@ -6,13 +6,13 @@ module Sacn
         # https://tsp.esta.org/tsp/documents/docs/E1-31-2016.pdf#page=25
         # https://tsp.esta.org/tsp/documents/docs/ANSI_E1-31-2018.pdf#page=25
         def self.prepended(base)
-          puts "FRAME prepended"
+          # puts "FRAME prepended"
           base.attr_accessor :framing_flags, :framing_length, :framing_vector, :source_name, :priority, :sync_addr, :sequence, :options, :universe
         end
         # attr_accessor :framing_flags, :framing_length, :framing_vector, :source_name, :priority, :sequence, :options, :universe
 
         def ==(other_packet)
-          puts '==(other); data; frame'
+          # puts '==(other); data; frame'
           ret = super and 
             self.framing_flags == other_packet.framing_flags and 
             self.framing_length == other_packet.framing_length and 
@@ -50,7 +50,7 @@ module Sacn
         DATA_OFFSET = FULL_FRAMING_LAYER_SIZE#FULL_FRAMING_LAYER_SIZE-RootLayer::FULL_ROOT_LAYER_SIZE
 
         def init(options = {})
-          puts "FRAME INIT"
+          # puts "FRAME INIT"
           super
           @framing_flags = FRAMING_FLAGS
           @framing_vector = FRAME_VECTOR
@@ -76,7 +76,7 @@ module Sacn
 
 
         def pack(data = "")
-          puts "frame_pack"
+          # puts "frame_pack"
 
           @sequence = @io&.up_sequence(@universe) || 1
 
