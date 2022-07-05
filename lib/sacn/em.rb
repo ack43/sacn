@@ -4,7 +4,7 @@ class Sacn::EMServer < EM::Connection
 
   def initialize
     @sacn = Sacn::IO.new(false)
-    puts "init emserver"
+    # puts "init emserver"
   end
 
   def receive_data(data)
