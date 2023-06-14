@@ -85,7 +85,7 @@ module Sacn
       #   # puts 'no data to process!'
       #   # no data to process!
       #   return nil
-      ensure
+      # ensure
         # retry
       end
     end

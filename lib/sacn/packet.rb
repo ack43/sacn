@@ -20,7 +20,7 @@ module Sacn
 
     def self.load(data, sender = nil)
       valid, vector = Base.valid?(data)
-      raise PacketFormatError.new('Not an sAcn packet (valid)')     unless valid
+      raise PacketFormatError.new('Not an sAcn packet (valid)') unless valid
       klass = types[vector]
       if klass.nil?
         puts "Unknown vector 0x#{vector.to_s(16)}"
